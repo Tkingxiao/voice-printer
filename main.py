@@ -632,13 +632,13 @@ class LiveTypePrinter(QMainWindow):
         self.char_audio_map = {}
 
         # 获取所有单字文件夹
-        char_folders = [
+        self.char_folders = [
             f
             for f in os.listdir(speaker_path)
             if os.path.isdir(os.path.join(speaker_path, f))
         ]
 
-        for char in char_folders:
+        for char in self.char_folders:
             char_path = os.path.join(speaker_path, char)
             # 获取该字符的所有音频文件
             audio_files = [
@@ -652,7 +652,7 @@ class LiveTypePrinter(QMainWindow):
     def update_info_label(self):
         """更新信息标签"""
         if self.current_speaker:
-            available_chars = len(self.char_audio_map)
+            available_chars = len(self.char_folders)
             info_text = (
                 f"当前主播: {self.current_speaker}\n" f"可用字符: {available_chars}\n"
             )
